@@ -1,0 +1,56 @@
+prompt,temperature,max_tokens,top_p
+"Who are you?",1,200,0.4
+"Can you explain yourself to 5-year old baby",1,300,0.6
+"What's your favorite color?",0.7,250,0.4
+"What's your favorite food?",0.8,250,0.4
+"What's your favorite movie?",0.9,250,0.5
+"What's your favorite song?",0.7,250,0.4
+"What's your favorite book?",0.8,250,0.4
+"What's your favorite animal?",0.9,250,0.3
+"How old are you?",0.7,250,0.3
+"What do you like to do?",0.8,300,0.3
+"What's your favorite hobby?",1,185,0.7
+"Can you recommend a good book?",0.8,120,0.9
+"Tell me a scary story.",0.9,200,0.7
+"What's your favorite food?",0.6,300,0.8
+"What's the meaning of happiness?",0.8,200,0.9
+"What are your thoughts on climate change? It is really becoming global crisis now", 0.7, 250, 0.9
+"Tell me about your favorite vacation spot.My favorite vacation spot is Hawaii. It's a beautiful place with lots of great activities. Have you ever been there? If so, what did you like about it?", 0.8, 230, 0.8
+"What do you think about artificial intelligence?, I think AI has the potential to revolutionize many industries and improve our lives, but we need to be careful to ensure it's used ethically and responsibly. What are your thoughts on AI?", 0.9, 230, 0.7
+"Can you recommend a good book to read? my favorite books is 'To Kill a Mockingbird' by Harper Lee. Have you read it? If so, what did you think? If not, what kinds of books do you typically enjoy?", 1, 180, 0.9
+"What do you like to do in your free time?. In my free time, I enjoy reading, hiking, and spending time with friends and family. What about you? What do you like to do?", 0.8, 180, 0.8
+"What's your favorite type of cuisine?", 0.7, 300, 0.8
+"Can you help me brainstorm gift ideas for a friend?", 1, 120, 0.9
+"What's your favorite TV show?", 0.9, 200, 0.9
+"What's your favorite hobby?", 0.9, 200, 0.9
+"What's the best way to prepare for a job interview?", 0.8, 300, 0.9
+"Write a story about a girl who discovers she has superpowers.",0.9,180,0.9
+"Generate a list of 10 unique gift ideas for Christmas.",0.9,300,0.8
+"What are the best books to read for personal growth?",0.6,120,0.85
+"How to make a homemade pizza from scratch?",0.3,200,0.95
+"What are some effective ways to reduce stress?",0.5,300,0.6
+"Describe the process of photosynthesis in plants.",0.7,200,0.4
+"How to train a dog to roll over?",0.9,110,0.4
+"What are the most popular tourist attractions in Paris?",0.8,120,0.8
+"Write a poem about the beauty of nature.",0.8,250,0.75
+"Can you explain quantam state to a kid",1,120,0.8
+"Elaborate climate change in all aspect and every age person",1,120,0.7
+"Elucidate yourself in more general manner to a young kid", 0.95,200,0.8
+"What are some healthy breakfast ideas?",0.6,300,0.9
+"Generate a list of 5 romantic date ideas.",0.8,250,0.95
+"How to repair a leaky faucet in the bathroom?",0.7,85,0.5
+"Write a short story about a time traveler who goes back to ancient Egypt.",0.9,300,0.9
+"Write a story about a crow and water.",0.9,250,0.9
+"Write a story about a child and disobedient neighbour",0.9,300,0.9
+"Write a documentry time traveler who goes to future for dystopian civilization .",0.9,300,0.9
+"Create a summary of current stock mareket trends",0.3,120,0.7
+"Create a short explaination about current stock prizes and inflations",0.3,120,0.7
+"What are the benefits of meditation?",0.4,200,0.75
+"Describe the process of making a cup of tea.",0.4,110,0.98
+"How to grow tomatoes in a garden?",0.6,350,0.8
+"Write a poem about the changing seasons.",0.3,250,0.7
+"What are the most popular hiking trails in the United States?",0.7,250,0.85
+"How to make a DIY face mask at home?",0.8,250,0.95
+"Generate a list of 10 fun activities to do with kids at home.",0.6,300,0.9
+
+
