@@ -43,19 +43,3 @@ early_stop = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights
 history = model.fit(X_train_vec, Y_train_num_norm, validation_split=0.2, epochs=130, batch_size=16, callbacks=[early_stop])
 
 model.save('models/Seq_NN_GPT_Param.h5')
-# Get user input prompt
-user_prompt = input('Please enter your prompt: ')
-
-# Vectorize the user prompt
-X_user_vec = vectorizer.transform([user_prompt])
-X_user_vec = X_user_vec.toarray()
-
-pred = model.predict(X_user_vec)
-pred = scaler.inverse_transform(pred)
-# Use the trained model to predict appropriate parameter values
-temperature, max_tokens, top_p = pred[0]
-
-# Print the predicted parameter values
-print('Recommended temperature:', temperature)
-print('Recommended max tokens:', int(max_tokens))
-print('Recommended top p:', top_p)
