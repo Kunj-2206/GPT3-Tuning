@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from GPT3_Tuner.views import ChatbotView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('chat/',ChatbotView)
 ]

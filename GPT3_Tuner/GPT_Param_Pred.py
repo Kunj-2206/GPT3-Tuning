@@ -8,38 +8,41 @@ from tensorflow.keras.regularizers import l2
 from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.feature_extraction.text import CountVectorizer
 
-# Load the dataset
-data = pd.read_csv('prompt_dataset.csv')
 
-# Split the data into training and testing sets
-X_train = data['prompt']
-y_train = data[['temperature', 'max_tokens', 'top_p']].values
-Y_train_num = data[['temperature', 'max_tokens', 'top_p']].values
+def generate_model():
+    # Load the dataset
+    data = pd.read_csv('prompt_dataset.csv')
 
-# Load pre-trained word embeddings
-vectorizer = CountVectorizer()
-X_train_vec = vectorizer.fit_transform(X_train)
-X_train_vec = X_train_vec.toarray()
+    # Split the data into training and testing sets
+    X_train = data['prompt']
+    y_train = data[['temperature', 'max_tokens', 'top_p']].values
+    Y_train_num = data[['temperature', 'max_tokens', 'top_p']].values
 
-scaler = MinMaxScaler()
-Y_train_num_norm = scaler.fit_transform(Y_train_num)
+    # Load pre-trained word embeddings
+    vectorizer = CountVectorizer()
+    X_train_vec = vectorizer.fit_transform(X_train)
+    X_train_vec = X_train_vec.toarray()
 
-# Define the neural network architecture
-model = Sequential([
-    Dense(128, activation='relu', input_dim=X_train_vec.shape[1], kernel_regularizer=l2(0.01)),
-    Dropout(0.2),
-    Dense(64, activation='relu', kernel_regularizer=l2(0.01)),
-    Dropout(0.2),
-    Dense(3, activation='linear')
-])
+    scaler = MinMaxScaler()
+    Y_train_num_norm = scaler.fit_transform(Y_train_num)
 
-# Compile the model
-model.compile(loss='mean_absolute_error', optimizer=RMSprop(lr=0.001))
+    # Define the neural network architecture
+    model = Sequential([
+        Dense(128, activation='relu', input_dim=X_train_vec.shape[1], kernel_regularizer=l2(0.01)),
+        Dropout(0.2),
+        Dense(64, activation='relu', kernel_regularizer=l2(0.01)),
+        Dropout(0.2),
+        Dense(3, activation='linear')
+    ])
 
-# Set up early stopping e=10, restore_best_weights=True)
-early_stop = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
+    # Compile the model
+    model.compile(loss='mean_absolute_error', optimizer=RMSprop(lr=0.001))
 
-# Train the model
-history = model.fit(X_train_vec, Y_train_num_norm, validation_split=0.2, epochs=130, batch_size=16, callbacks=[early_stop])
+    # Set up early stopping e=10, restore_best_weights=True)
+    early_stop = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
 
-model.save('models/Seq_NN_GPT_Param.h5')
+    # Train the model
+    history = model.fit(X_train_vec, Y_train_num_norm, validation_split=0.2, epochs=130, batch_size=16, callbacks=[early_stop])
+
+    # Save the model for further use
+    model.save('models/Seq_NN_GPT_Param.h5')
