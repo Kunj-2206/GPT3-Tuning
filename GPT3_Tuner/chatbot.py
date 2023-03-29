@@ -4,35 +4,12 @@ import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.preprocessing import MinMaxScaler
 from tensorflow.keras.models import load_model
+from GPT3_Tuner.GPT_Param_Pred import param_prediction
 
-def generate_response(user_prompt):
-  vectorizer = CountVectorizer()
-  OPENAI_API_KEY = os.getenv('OPENAI_API')
-  data = pd.read_csv('prompt_dataset.csv')
-  X_train = data['prompt']
-  X_train_vec = vectorizer.fit_transform(X_train)
-  Y_train_num = data[['temperature', 'max_tokens', 'top_p']].values
-
-
-  # Get user input prompt
-  model =  load_model('models/Seq_NN_GPT_Param.h5')
-  # Vectorize the user prompt
-  X_user_vec = vectorizer.transform([user_prompt])
-  X_user_vec = X_user_vec.toarray()
-
-  scaler = MinMaxScaler()
-  Y_train_num_norm = scaler.fit_transform(Y_train_num)
-  pred = model.predict(X_user_vec)
-  pred = scaler.inverse_transform(pred)
-  # Use the trained model to predict appropriate parameter values
-  temperature, max_tokens, top_p = pred[0]
-
-  # Print the predicted parameter values
-  print('Recommended temperature:', temperature)
-  print('Recommended max tokens:', int(max_tokens))
-  print('Recommended top p:', top_p)
-
-  openai.api_key = OPENAI_API_KEY
+def generate_response(user_prompt, temperature, max_tokens, top_p):
+  if(temperature == float(0.1) and max_tokens == 1 and top_p == float(0.1)):
+    temperature, max_tokens, top_p = param_prediction(user_prompt)
+  openai.api_key = os.getenv('OPENAI_API')
   response = openai.Completion.create(
     model="text-davinci-003",
     prompt=user_prompt,
