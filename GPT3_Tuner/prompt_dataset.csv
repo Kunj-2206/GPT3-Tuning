@@ -52,5 +52,7 @@ prompt,temperature,max_tokens,top_p
 "What are the most popular hiking trails in the United States?",0.7,250,0.85
 "How to make a DIY face mask at home?",0.8,250,0.95
 "Generate a list of 10 fun activities to do with kids at home.",0.6,300,0.9
-
-
+"make python code to detect image edge",0.72,2057,0.73
+"""make python code to detect image edge""",0.72,2057,0.73
+"""generate python code for face detection and image detection.""",0.76,2425,0.82
+"Generate python code to compile c program",0.93,2425,0.75

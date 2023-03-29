@@ -24,5 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('chat/',ChatbotView),
     re_path(r'^docs/(?P<path>.*)$', serve, {'document_root': settings.DOCS_ROOT}),
-    re_path(r'^docs/', serve, {'document_root': settings.DOCS_ROOT, 'path': 'index.html'}),
+    re_path(r'^docs/', serve, {'document_root': settings.DOCS_ROOT, 'path': 'index.html'},'docs'),
  ]

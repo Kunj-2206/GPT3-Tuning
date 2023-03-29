@@ -7,7 +7,7 @@
     
   </head>
   <body>
-    <div class="info">
+    <div class="info" style="color:#fff">
         <label>{{info}}</label>
     </div>
     <div class="response"> {{GPT_response}} </div>
@@ -20,21 +20,22 @@
             <button class="btn" name="respBtn" type="submit" value="respBtn"> Generate Response </button>
             <button class="btn" name="modelBtn" type="submit" value="modelBtn"> Train Model </button>
             <button class="btn" name="paramBtn" type="submit" value="paramBtn"> Generate GPT Parameters </button>
+            <button class="btn" name="docsBtn" type="submit" value="Docs"><a href="http://127.0.0.1:8000/docs/index.html"> Go to Docs </a></button>
         </div>
     <div class="sliders">
-        <div class="temperature">
+        <div class="slider_class">
             <label> Select range of temperature: </label> <br>
             <output id="rangeValue1">0.1</output> <br>
             {{tempSlider.temp_slider}}<br>
-            <label class="description">This parameter controls creativity of the response.A higher value will produce more diverse result.</label>
+            <label class="description">This parameter controls creativity of the response.<br>A higher value will produce more diverse result.</label>
         </div>
-        <div class="tokens">
+        <div class="slider_class">
             <label> Select range of Max Tokens: </label> <br>
             <output id="rangeValue2">1</output> <br>
             {{tokenSlider.token_slider}}<br>
             <label class="description">This parameter represent maximum number of tokens in result</label>
         </div>
-        <div class="top_p">
+        <div class="slider_class">
             <label> Select range of top_p: </label> <br>
             <output id="rangeValue3">0.1</output> <br>
             {{topSlider.top_slider}}<br>
@@ -42,7 +43,6 @@
         </div>
     </div>
 </form>
-
     <script type="text/javascript">
         function rangeSlide1(value) {
             document.getElementById('rangeValue1').innerHTML = value;
