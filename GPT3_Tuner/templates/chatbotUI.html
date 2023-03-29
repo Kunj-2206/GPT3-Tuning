@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<html>
+  <head>
+    <title>ChatGPT Tuner</title>
+    
+  </head>
+  <body>
+    <div class="info">
+        <label>{{info}}</label>
+    </div>
+    <div class="response"> {{GPT_response}} </div>
+    <form method="post">
+        {% csrf_token %}
+        <div class="textbox-container">
+            {{textForm.text_input}}
+        </div>
+        <div class="buttons">
+            <button class="btn" name="respBtn" type="submit" value="respBtn"> Generate Response </button>
+            <button class="btn" name="modelBtn" type="submit" value="modelBtn"> Train Model </button>
+            <button class="btn" name="paramBtn" type="submit" value="paramBtn"> Generate GPT Parameters </button>
+        </div>
+    <div class="sliders">
+        <div class="temperature">
+            <label> Select range of temperature: </label> <br>
+            <output id="rangeValue1">0.1</output> <br>
+            {{tempSlider.temp_slider}}<br>
+            <label class="description">This parameter controls creativity of the response.A higher value will produce more diverse result.</label>
+        </div>
+        <div class="tokens">
+            <label> Select range of Max Tokens: </label> <br>
+            <output id="rangeValue2">1</output> <br>
+            {{tokenSlider.token_slider}}<br>
+            <label class="description">This parameter represent maximum number of tokens in result</label>
+        </div>
+        <div class="top_p">
+            <label> Select range of top_p: </label> <br>
+            <output id="rangeValue3">0.1</output> <br>
+            {{topSlider.top_slider}}<br>
+            <label class="description">This parameter controls the narrowness of the generated response. A lower value lead to more coherent response.</label>
+        </div>
+    </div>
+</form>
+
+    <script type="text/javascript">
+        function rangeSlide1(value) {
+            document.getElementById('rangeValue1').innerHTML = value;
+        }
+        function rangeSlide2(value) {
+            document.getElementById('rangeValue2').innerHTML = value;
+        }
+        function rangeSlide3(value) {
+            document.getElementById('rangeValue3').innerHTML = value;
+        }
+        
+        // Get the textbox element
+        var textbox = document.getElementById("textbox1");
+      
+        // If the textbox value is stored in the browser's local storage, set it as the textbox value
+        if (localStorage.getItem("UserPrompt")) {
+            textbox.value = localStorage.getItem("myTextboxValue");
+            textbox.placeholder = textbox.value
+        }
+      
+        // Save the textbox value to the browser's local storage when the form is submitted
+        document.querySelector("form").addEventListener("submit", function() {
+            localStorage.setItem("UserPrompt", textbox.value);
+        });
+    </script>
+
+  </body>
+  
+</html>
