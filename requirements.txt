@@ -25,7 +25,7 @@ huggingface-hub==0.13.3
 idna==3.4
 Jinja2==3.1.2
 joblib==1.2.0
-keras==2.11.0
+keras==3.9.0
 libclang==15.0.6.1
 lit==16.0.0
 Markdown==3.4.1
